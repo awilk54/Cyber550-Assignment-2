@@ -6,7 +6,6 @@ SERVER_PORT = 9000             # The same port as used by the server
 print("Waiting for Secret Message....")
 clientB = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 clientB.connect((SERVER_IP, SERVER_PORT))
-#clientB.sendall(b'Client B')
 data = clientB.recv(1024)
 secret_message=data.decode()
 clientB.close()

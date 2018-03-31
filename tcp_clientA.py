@@ -6,7 +6,7 @@ from Cryptodome.Cipher import AES
 
 SERVER_IP = "127.0.0.1"    #server IP of 127.0.0.1 LOOPBACK used for testing
 SERVER_PORT = 9000         # server Port
-CIPHER_KEY=b'12345678sixteen!' #Shared Key
+CIPHER_KEY=b'12345678sixteen!' #Shared Encryption/decryption Key
 NONCE=b'12345678998765$$' #shared NONCE key for validity
 
 clientA = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #TCP socket creation
@@ -17,11 +17,11 @@ while True:
 	Secret_Message_Input= getpass.getpass(prompt='Enter Secret Message.. : ' )
 	print("Message will Encrypt with AES")
 	print()
-	raw_message=Secret_Message_Input.encode()
-	CIPHER = AES.new(CIPHER_KEY, AES.MODE_EAX, NONCE)
+	raw_message=Secret_Message_Input.encode() #Encode message to bytes
+	CIPHER = AES.new(CIPHER_KEY, AES.MODE_EAX, NONCE) #AES encryption using EAX mode with predefined cipher key and nonce key for validation
 	ciphertext, tag = CIPHER.encrypt_and_digest(raw_message)
-	clientA.send(ciphertext)
-	clientA.close()
+	clientA.send(ciphertext) #send ciphertext of raw message
+	clientA.close()#close socket
 	print()
 	break
 
