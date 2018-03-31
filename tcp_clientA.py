@@ -20,6 +20,7 @@ while True:
 	raw_message=Secret_Message_Input.encode() #Encode message to bytes
 	CIPHER = AES.new(CIPHER_KEY, AES.MODE_EAX, NONCE) #AES encryption using EAX mode with predefined cipher key and nonce key for validation
 	ciphertext, tag = CIPHER.encrypt_and_digest(raw_message)
+	print("Sending Encrypted Message:",ciphertext)
 	clientA.send(ciphertext) #send ciphertext of raw message
 	clientA.close()#close socket
 	print()

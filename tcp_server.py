@@ -26,14 +26,15 @@ print()
 
 
 while True:
-	print("Received Secret Encrypted Message...")
+	print("Receiving Secret Encrypted Message...")
 	print()
-	print("Decrypting using Shared Key...")
 	data=conn.recv(TCP_BUFFER) #ClientA sending cipher message
 	ciphertext=data
-	#print(ciphertext)
+	print("Received Encrypted Message:",ciphertext)
+	print()
 	cipher = AES.new(CIPHER_KEY, AES.MODE_EAX,NONCE)
 	plaintext = cipher.decrypt(ciphertext) #decryption of cipher message passed from client A
+	print("Decrypting using Shared Key...")
 	#print(plaintext)
 	#print("data:", data)
 	conn1.sendall(plaintext)
