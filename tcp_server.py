@@ -9,9 +9,9 @@ from Cryptodome.Cipher import AES
 
 SERVER_IP = "127.0.0.1" #Server IP using Loopback for testing
 SERVER_PORT = 9000   #Server Port
-CIPHER_KEY=b'12345678sixteen!' #Shared Key
+CIPHER_KEY=b'bQeThWmZq4t7w!z%C*F-JaNdRfUjXn2r' #Shared Key 32 bytes for 256-bit encryption
 TCP_BUFFER= 1024 #Buffer for receiving data
-NONCE=b'12345678998765$$'
+NONCE=b'dRgUkXp2s5v8y/B?E(G+KbPeShVmYq3t' #shared nonce key for validation. 
           
 TCPserver = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #initialize TCP stream
 TCPserver.bind((SERVER_IP, SERVER_PORT)) #Bind TCP Stream connectoin
@@ -32,7 +32,7 @@ while True:
 	ciphertext=data
 	print("Received Encrypted Message:",ciphertext)
 	print()
-	cipher = AES.new(CIPHER_KEY, AES.MODE_EAX,NONCE)
+	cipher = AES.new(CIPHER_KEY, AES.MODE_EAX,NONCE) #AES encryption using EAX mode -Encrypt/authenticate/translate
 	plaintext = cipher.decrypt(ciphertext) #decryption of cipher message passed from client A
 	print("Decrypting using Shared Key...")
 	#print(plaintext)

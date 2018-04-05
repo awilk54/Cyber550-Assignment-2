@@ -6,8 +6,8 @@ from Cryptodome.Cipher import AES
 
 SERVER_IP = "127.0.0.1"    #server IP of 127.0.0.1 LOOPBACK used for testing
 SERVER_PORT = 9000         # server Port
-CIPHER_KEY=b'12345678sixteen!' #Shared Encryption/decryption Key
-NONCE=b'12345678998765$$' #shared NONCE key for validity
+CIPHER_KEY=b'bQeThWmZq4t7w!z%C*F-JaNdRfUjXn2r' #Shared Encryption/decryption Key
+NONCE=b'dRgUkXp2s5v8y/B?E(G+KbPeShVmYq3t' #shared NONCE key for validity
 
 clientA = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #TCP socket creation
 clientA.connect((SERVER_IP, SERVER_PORT)) #TCP connection
